@@ -15,18 +15,15 @@ X, y, _ = load_and_preprocess_data(DATA_PATH)
 df = pd.DataFrame(X)
 df["Fire_Risk"] = y
 
-# Biểu đồ phân phối của các đặc trưng
 df.hist(figsize=(12, 8), bins=20, edgecolor='black')
 plt.suptitle("Histogram of Features", fontsize=16)
 plt.show()
 
-# Ma trận tương quan giữa các biến
 plt.figure(figsize=(10, 6))
 sns.heatmap(df.corr(), annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5)
 plt.title("Feature Correlation Heatmap", fontsize=14)
 plt.show()
 
-# Biểu đồ phân tán theo 2 đặc trưng quan trọng
 plt.figure(figsize=(8, 6))
 sns.scatterplot(x=df.iloc[:, 0], y=df.iloc[:, 1], hue=df["Fire_Risk"], palette="coolwarm", alpha=0.7)
 plt.xlabel(df.columns[0])
